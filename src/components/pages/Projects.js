@@ -1,13 +1,14 @@
-import styles from "./Projects.module.css";
+import { useState, useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
-
-import { useState, useEffect } from "react";
 
 import Container from "../layout/Container";
 import Loading from "../layout/Loading";
 import Message from "../layout/Message";
 import LinkButton from "../layout/LinkButton";
+
+import styles from "./Projects.module.css";
+
 import ProjectCard from "../project/ProjectCard";
 
 function Projects() {
@@ -31,12 +32,11 @@ function Projects() {
       })
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data);
           setProjects(data);
           setRemoveLoading(true);
         })
         .catch((err) => console.log(err));
-    }, 3000);
+    }, 500);
   }, []);
 
   function removeProject(id){
@@ -72,6 +72,7 @@ function Projects() {
               name={project.name}
               budget={project.budget}
               category={project.category.name}
+              key={project.id}
               handleRemove={removeProject}
             />
           ))}
@@ -81,7 +82,7 @@ function Projects() {
         )}
       </Container>
     </div>
-  );
+  )
 }
 
 export default Projects;

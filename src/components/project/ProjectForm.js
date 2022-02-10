@@ -26,7 +26,7 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
   const submit = (e) => {
     e.preventDefault();
     console.log(project);
-    //handleSubmit(project);
+    handleSubmit(project);
   };
 
   function handleChange(e) {
@@ -41,7 +41,7 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
         name: e.target.options[e.target.selectedIndex].text,
       },
     });
-    console.log(project);
+    //console.log(project);
   }
 
   return (
